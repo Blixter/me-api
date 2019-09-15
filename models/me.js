@@ -7,7 +7,7 @@ const me = {
             if (err) {
                 return me.errorResponse(res, "/me", err);
             }
-            res.status(status).json( { data: rows } );
+            res.status(status).json( rows );
         });
     },
 
