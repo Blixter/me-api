@@ -88,6 +88,9 @@ const auth = {
     },
 
     register: function(res, body) {
+        const firstname = body.firstname;
+        const lastname = body.lastname;
+        const birthdate = body.birthdate;
         const email = body.email;
         const password = body.password;
 
@@ -114,7 +117,10 @@ const auth = {
                 });
             }
 
-            db.run("INSERT INTO users (email, password) VALUES (?, ?)",
+            db.run("INSERT INTO users (firstname, lastname, birthdate, email, password) VALUES (?, ?, ?, ?, ?)",
+                firstname,
+                lastname,
+                birthdate,
                 email,
                 hash, (err) => {
                     if (err) {
