@@ -39,7 +39,7 @@ const reports = {
                     });
                 }
 
-                res.status(status).json( { row } );
+                res.status(status).json( row );
             });
         } else {
             res.status(400).json({
