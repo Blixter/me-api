@@ -85,6 +85,25 @@ const auth = {
             });
     },
 
+    getUser: function(res, req) {
+        db.all("SELECT * FROM users WHERE email = ?",
+            req.user.email,
+            (err, rows) => {
+                if (err) {
+                    return res.status(500).json({
+                        errors: {
+                            status: 500,
+                            source: "/login",
+                            title: "Database error",
+                            detail: err.message
+                        }
+                    });
+                }
+                return res.json( rows );
+            });
+    },
+
+
     register: function(res, body) {
         const firstname = body.firstname;
         const lastname = body.lastname;

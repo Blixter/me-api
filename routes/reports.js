@@ -1,36 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-const jwt = require('jsonwebtoken');
+const auth = require("../models/auth.js");
+const reports = require("../models/reports.js");
 
-// const payload = { email: "user@example.com" };
-// const secret = process.env.JWT_SECRET;
+router.get("/:report_id",
+    (req, res, next) => auth.checkToken(req, res, next),
+    (req, res) => reports.getReport(res, req.params.invoice_id));
 
-// const token = jwt.sign(payload, secret, { expiresIn: '1h'});
-
-// jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
-//     if (err) {
-//         // not a valid token
-//     }
-
-//     // valid token
-// });
-
-router.post("/reports",
-    (req, res, next) => checkToken(req, res, next),
+router.post("/",
+    (req, res, next) => auth.checkToken(req, res, next),
     (req, res) => reports.addReport(res, req.body));
 
-function checkToken(req, res, next) {
-    const token = req.headers['x-access-token'];
-
-    jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
-        if (err) {
-            // send error response
-        }
-
-        // Valid token send on the request
-        next();
-    });
-}
 
 module.exports = router;

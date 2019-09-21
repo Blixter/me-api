@@ -13,3 +13,9 @@ CREATE TABLE IF NOT EXISTS me (
     description TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS reports (
+    id INTEGER NOT NULL,
+    author VARCHAR(25) NOT NULL,
+    text TEXT NOT NULL
+);
+
