@@ -10,6 +10,8 @@ const auth = require('./routes/auth');
 
 const app = express();
 
+require('dotenv').config()
+
 // For production
 // const port = 8333;
 
