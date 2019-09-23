@@ -3,8 +3,9 @@ const db = require("../db/database.js");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const secret = process.env.JWT_SECRET;
+require('dotenv').config()
 
+const secret = process.env.JWT_SECRET;
 
 const auth = {
     login: function(res, body) {
