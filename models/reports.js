@@ -52,8 +52,7 @@ const reports = {
     },
 
     updateReport: function(res, body) {
-        db.run("UPDATE reports SET text = ?)" +
-            " WHERE id = ?",
+        db.run("UPDATE reports SET text = ? WHERE id = ?",
         body.text,
         body.id,
         function (err) {
@@ -63,12 +62,12 @@ const reports = {
                         status: 500,
                         source: "PUT /reports UPDATE",
                         title: "Database error",
-                        detail: err.message
+                        detail: err.message,
                     }
                 });
             }
 
-            return res.status(204).send;
+            return res.status(204).send();
         });
     }
 };
