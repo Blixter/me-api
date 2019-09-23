@@ -47,7 +47,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Github repo
 Here's a link to the repo on GitHub: [https://github.com/Blixter/jsramverk](https://github.com/Blixter/jsramverk).")
 
-INSERT INTO reports (id, author, text) VALUES ("2", "# Vecka 2
+INSERT INTO reports (id, text) VALUES ("2", "# Vecka 2
 
 Vecka 2 och jag har nu arbetat med ett registreringsformulär samt en date-picker.
 Jag valde att göra ungefär som Gmails date-picker för födelsedatum. Det blir det smidigaste sättet tycker jag. Eftersom man först kan välja månad i dropdown-menyn, sedan är det bara att tabba och skriva dag och år. Jag gjorde input-fältet för dagen lite mindre och året lite större, för att användaren skall förstå att året skall skrivas med fler siffror, alltså YYYY. Som input valde jag självklart 'number'. Det finns mer jobb att göra för att den skall stämma helt och hållet. Till exempel så går det att fylla i 1 - 31 dagar för varje månad. Jag har gjort så att det inte blir validerat om användaren skriver utanför 1 - 31 i dagar, samt om man inte håller sig innanför 1900 - nuvarande år.
