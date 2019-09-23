@@ -13,4 +13,8 @@ router.post("/",
     (req, res) => reports.addReport(res, req.body));
 
 
+router.put("/",
+    (req, res, next) => auth.checkToken(req, res, next),
+    (req, res) => reports.updateReport(res, req.body));
+
 module.exports = router;

@@ -1,28 +1,6 @@
 const db = require("../db/database.js");
 
 const reports = {
-
-    // getreports: function(res, apiKey) {
-    //     db.all("SELECT " + reports.dataFields +
-    //         " FROM reports i" +
-    //         " INNER JOIN orders o ON o.ROWID = i.orderId AND o.apiKey = i.apiKey" +
-    //         " WHERE i.apiKey = ?",
-    //     apiKey, (err, rows) => {
-    //         if (err) {
-    //             return res.status(500).json({
-    //                 errors: {
-    //                     status: 500,
-    //                     source: "/reports",
-    //                     title: "Database error",
-    //                     detail: err.message
-    //                 }
-    //             });
-    //         }
-
-    //         res.json( { data: rows } );
-    //     });
-    // },
-
     getReport: function(res, reportId, status=200) {
         if (Number.isInteger(parseInt(reportId))) {
             db.get("SELECT text from reports WHERE id = ?",
@@ -53,10 +31,9 @@ const reports = {
     },
 
     addReport: function(res, body) {
-        db.run("INSERT INTO reports (id, author, text)" +
-            " VALUES (?, ?, ?)",
+        db.run("INSERT INTO reports (id, text)" +
+            " VALUES (?, ?)",
         body.id,
-        body.author,
         body.text,
         function (err) {
             if (err) {
@@ -71,6 +48,27 @@ const reports = {
             }
 
             reports.getReport(res, this.lastID, 201);
+        });
+    },
+
+    updateReport: function(res, body) {
+        db.run("UPDATE reports SET text = ?)" +
+            " WHERE id = ?",
+        body.text,
+        body.id,
+        function (err) {
+            if (err) {
+                return res.status(500).json({
+                    errors: {
+                        status: 500,
+                        source: "PUT /reports UPDATE",
+                        title: "Database error",
+                        detail: err.message
+                    }
+                });
+            }
+
+            return res.status(204).send;
         });
     }
 };
