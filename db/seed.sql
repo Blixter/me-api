@@ -45,7 +45,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Github repo
-Here's a link to the repo on GitHub: [https://github.com/Blixter/jsramverk](https://github.com/Blixter/jsramverk).")
+Here's a link to the repo on GitHub: [https://github.com/Blixter/jsramverk](https://github.com/Blixter/jsramverk).");
 
 INSERT INTO reports (id, text) VALUES ("2", "# Vecka 2
 
@@ -61,6 +61,6 @@ Mitt registreringsformulär gjorde jag med mycket hjälp från en Youtuber och f
 Jag har valt att React/JavaScript skall styra över valideringen. Det går bara att klicka på submit-knappen om alla fält är ifyllda och valideras. När man sedan skickat iväg formuläret så händer det inte så mycket än. Däremot kan man se all data som skickas iväg i console-loggen. Jag tänker att den datan får jag ta hand om i nästa kursmoment, när vi börjar med backend.
 
 ## Github repo
-Här är GitHub-repot: [https://github.com/Blixter/jsramverk](https://github.com/Blixter/jsramverk).")
+Här är GitHub-repot: [https://github.com/Blixter/jsramverk](https://github.com/Blixter/jsramverk).");
 
 
