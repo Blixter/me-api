@@ -4,21 +4,21 @@ const reports = {
     getReport: function(res, reportId, status=200) {
         if (Number.isInteger(parseInt(reportId))) {
             db.get("SELECT text from reports WHERE id = ?",
-            reportId,
-            function(err, row) {
-                if (err) {
-                    return res.status(500).json({
-                        errors: {
-                            status: 500,
-                            source: "/reports/" + reportId,
-                            title: "Database error",
-                            detail: err.message
-                        }
-                    });
-                }
+                reportId,
+                function(err, row) {
+                    if (err) {
+                        return res.status(500).json({
+                            errors: {
+                                status: 500,
+                                source: "/reports/" + reportId,
+                                title: "Database error",
+                                detail: err.message
+                            }
+                        });
+                    }
 
-                res.status(status).json( row );
-            });
+                    res.status(status).json( row );
+                });
         } else {
             res.status(400).json({
                 errors: {
@@ -47,28 +47,28 @@ const reports = {
                 });
             }
 
-            reports.getReport(res, this.lastID, 201);
+            return res.status(201).send();
         });
     },
 
     updateReport: function(res, body) {
         db.run("UPDATE reports SET text = ? WHERE id = ?",
-        body.text,
-        body.id,
-        function (err) {
-            if (err) {
-                return res.status(500).json({
-                    errors: {
-                        status: 500,
-                        source: "PUT /reports UPDATE",
-                        title: "Database error",
-                        detail: err.message,
-                    }
-                });
-            }
+            body.text,
+            body.id,
+            function (err) {
+                if (err) {
+                    return res.status(500).json({
+                        errors: {
+                            status: 500,
+                            source: "PUT /reports UPDATE",
+                            title: "Database error",
+                            detail: err.message,
+                        }
+                    });
+                }
 
-            return res.status(204).send();
-        });
+                return res.status(204).send();
+            });
     }
 };
 
