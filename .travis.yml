@@ -1,9 +1,9 @@
 language: node_js
 
 node_js:
-    - "10"
+    - "12"
 
-sudo: false
+sudo: true
 
 git:
     submodules: false
@@ -14,6 +14,6 @@ before_script:
 script:
     - npm test
 
-after_success:
-    - npm run report-coveralls
-    - npm run report-codecov
+# after_success:
+#     - npm run report-coveralls
+#     - npm run report-codecov
