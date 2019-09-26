@@ -10,10 +10,10 @@ const auth = require('./routes/auth');
 const app = express();
 
 // For production
-//const port = 8333;
+const port = 8333;
 
 // For developing
-const port = 1337;
+//const port = 1337;
 
 app.use(cors());
 
