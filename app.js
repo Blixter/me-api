@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const morgan = require('morgan');
-const path = require('path');
 
 const me = require('./routes/me');
 const reports = require('./routes/reports');
@@ -11,10 +10,10 @@ const auth = require('./routes/auth');
 const app = express();
 
 // For production
-const port = 8333;
+//const port = 8333;
 
 // For developing
-// const port = 1337;
+const port = 1337;
 
 app.use(cors());
 
@@ -43,6 +42,7 @@ app.use('/auth', auth);
 
 app.use((req, res, next) => {
     var err = new Error("Not Found");
+
     err.status = 404;
     next(err);
 });
@@ -64,4 +64,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start up server
-app.listen(port, () => console.log(`Example API listening on port ${port}!`));
+const server = app.listen(port, () => console.log('Me-api listening on port ' + port));
+
+module.exports = server;
