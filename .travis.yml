@@ -3,12 +3,13 @@ language: node_js
 node_js:
     - "12"
 
-sudo: true
+sudo: false
 
 git:
     submodules: false
 
 before_script:
+    - chmod +x db/reset_test_db.bash
     - npm install
 
 script:
