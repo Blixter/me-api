@@ -5,7 +5,7 @@ build:
         override:
           - export JWT_SECRET="L0ngS3cr3tK3y!"
           - chmod +x db/reset_test_db.bash
-          - npm test'
+          - npm test
             coverage:
               file: coverage/clover.xml
               format: clover
