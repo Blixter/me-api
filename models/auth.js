@@ -3,7 +3,7 @@ const db = require("../db/database.js");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-require('dotenv').config()
+require('dotenv').config();
 
 const secret = process.env.JWT_SECRET;
 
@@ -67,10 +67,10 @@ const auth = {
                         let jwtToken = jwt.sign(payload, secret, { expiresIn: '24h' });
 
                         return res.json({
-                                type: "success",
-                                message: "User logged in",
-                                user: payload,
-                                token: jwtToken
+                            type: "success",
+                            message: "User logged in",
+                            user: payload,
+                            token: jwtToken
                         });
                     }
 
@@ -135,29 +135,30 @@ const auth = {
                 });
             }
 
-            db.run("INSERT INTO users (firstname, lastname, birthdate, email, password) VALUES (?, ?, ?, ?, ?)",
-                firstname,
-                lastname,
-                birthdate,
-                email,
-                hash, (err) => {
-                    if (err) {
-                        return res.status(500).json({
-                            errors: {
-                                status: 500,
-                                source: "/register",
-                                title: "Database error",
-                                detail: err.message
-                            }
-                        });
-                    }
-
-                    return res.status(201).json({
-                        data: {
-                            message: "User successfully registered."
+            db.run("INSERT INTO users (firstname, lastname, "
+            + "birthdate, email, password) VALUES (?, ?, ?, ?, ?)",
+            firstname,
+            lastname,
+            birthdate,
+            email,
+            hash, (err) => {
+                if (err) {
+                    return res.status(500).json({
+                        errors: {
+                            status: 500,
+                            source: "/register",
+                            title: "Database error",
+                            detail: err.message
                         }
                     });
+                }
+
+                return res.status(201).json({
+                    data: {
+                        message: "User successfully registered."
+                    }
                 });
+            });
         });
     },
 
