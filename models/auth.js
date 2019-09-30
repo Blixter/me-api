@@ -194,7 +194,16 @@ const auth = {
                 }
             });
         }
+    },
+
+    ValidTokenResponse: function(req, res) {
+        return res.json({
+            status: 200,
+            type: "success",
+            message: "Valid token"
+        });
     }
+
 };
 
 module.exports = auth;
