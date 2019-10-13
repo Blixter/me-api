@@ -6,14 +6,29 @@ const morgan = require('morgan');
 const me = require('./routes/me');
 const reports = require('./routes/reports');
 const auth = require('./routes/auth');
+const chat = require('./routes/chat');
 
 const app = express();
 
+// MongoDB
+const mongoose = require('mongoose');
+
+// Connecting to the database
+mongoose.connect('mongodb://localhost/test', {
+    useNewUrlParser: true
+}).then(() => {
+    console.log("Successfully connected to the database");
+}).catch(err => {
+    console.log('Could not connect to the database. Exiting now...', err);
+    process.exit();
+});
+
+
 // For production
-const port = 8333;
+// const port = 8333;
 
 // For developing
-//const port = 1337;
+const port = 1337;
 
 app.use(cors());
 
@@ -38,6 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use('/', me);
 app.use('/reports', reports);
 app.use('/auth', auth);
+app.use('/chat', chat);
 
 
 app.use((req, res, next) => {
