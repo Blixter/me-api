@@ -14,7 +14,7 @@ const app = express();
 const mongoose = require('mongoose');
 
 // Connecting to the database
-mongoose.connect('mongodb://localhost/test', {
+mongoose.connect('mongodb://localhost/chat', {
     useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");
